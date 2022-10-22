@@ -9,9 +9,9 @@ function App() {
   return (
     <Router>
         <Routes>
-            <Route exact path='/' element={<Tablesort/>} />
-            {/* <Route exact path='/' element={<SearchUser/>} /> */}
-            {/* <Route exact path='/:names' element={<Details/>} /> */}
+            <Route exact path='/' element={<SearchUser/>} />
+            <Route exact path='/:names' element={<Details/>} />
+            <Route exact path='/:names/tableSortPage' element={<Tablesort/>} />
         </Routes>
     </Router>
   );

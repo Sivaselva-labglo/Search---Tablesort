@@ -73,6 +73,7 @@ export default function SearchUser() {
 
   const [users, setUsers] = useState(students)
   const redirect = useNavigate()
+  const navigates = useNavigate()
 
   const filter = (e) => {
     const searchString = e.target.value
@@ -90,24 +91,30 @@ export default function SearchUser() {
   function navigate(names) {
     redirect(`/${names}`)
   }
+
+  function sortTablePage() {
+    navigates(`/name/tableSortPage`)
+  }
   return (
     <div>
       <center>
-        <br /> <br />
+        <br/>
+        <Button variant="contained" onClick={sortTablePage}>Sort-Table</Button>
+      <br/> <br/>
         <TextField type='search' size="small" onChange={filter} placeholder="enter a name" />
         <Button variant="outlined"><SearchIcon></SearchIcon></Button>
-        <br /> <br />
+        <br/> <br/>
         {
           (users.length > 0)
             ? <Card sx={{ maxWidth: '275px' }}> {
               users.map((elements, index) => {
                 return (
-                  <CardContent key={index}>
-                    <p onClick={() => navigate(elements.name)}>Name : {elements.name}</p>
-                    <p>Gender : {elements.gender}</p>
-                    <p>Marks : {elements.marks}</p>
-                    <Divider />
-                  </CardContent>
+                    <CardContent key={index}>
+                      <p onClick={() => navigate(elements.name)}>Name : {elements.name}</p>
+                      <p>Gender : {elements.gender}</p>
+                      <p>Marks : {elements.marks}</p>
+                      <Divider/>
+                    </CardContent>
                 )
               })}
             </Card>
